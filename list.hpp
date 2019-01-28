@@ -19,6 +19,7 @@ private:
 public:
 	LinkedList();
 	size_t size() const;
+	bool empty() const;
 };
 
 template <typename T>
@@ -30,4 +31,10 @@ template <typename T>
 size_t LinkedList<T>::size() const
 {
 	return list_size;
+}
+
+template <typename T>
+bool LinkedList<T>::empty() const
+{
+	return list_size == 0 ? true : false;
 }
