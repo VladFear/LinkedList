@@ -19,6 +19,7 @@ private:
 
 public:
 	LinkedList();
+	~LinkedList();
 	void push_back(T data);
 	void push_front(T data);
 	void pop_back();
@@ -108,4 +109,11 @@ void LinkedList<T>::push_front(T data)
 		head = new_node;
 
 	list_size++;
+}
+
+template <typename T>
+LinkedList<T>::~LinkedList()
+{
+	while (list_size)
+		pop_back();
 }
