@@ -13,6 +13,8 @@ private:
 	};
 
 	size_t list_size = 0;
+	Node<T>* head = nullptr;
+	Node<T>* tail = nullptr;
 
 public:
 	LinkedList();
