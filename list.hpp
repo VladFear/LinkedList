@@ -21,6 +21,7 @@ public:
 	LinkedList();
 	void push_back(T data);
 	void push_front(T data);
+	void pop_back();
 	size_t size() const;
 	bool empty() const;
 	T& at(size_t pos) const;
@@ -69,6 +70,30 @@ T& LinkedList<T>::at(size_t pos) const
 	}
 
 	throw std::out_of_range("Out of range");
+}
+
+template <typename T>
+void LinkedList<T>::pop_back()
+{
+	if (list_size == 0)
+		return;
+	else if (list_size == 1)
+	{
+		delete head;
+		head = nullptr;
+		tail = nullptr;
+	}
+	else
+	{
+		Node<T>* tmp = tail;
+		while (tmp->next != head)
+			tmp = tmp->next;
+
+		tmp->next = nullptr;
+		delete head;
+		head = tmp;
+	}
+	list_size--;
 }
 
 template <typename T>
