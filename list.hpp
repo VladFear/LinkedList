@@ -20,6 +20,7 @@ private:
 public:
 	LinkedList();
 	void push_back(T data);
+	void push_front(T data);
 	size_t size() const;
 	bool empty() const;
 	T& at(size_t pos) const;
@@ -68,4 +69,18 @@ T& LinkedList<T>::at(size_t pos) const
 	}
 
 	throw std::out_of_range("Out of range");
+}
+
+template <typename T>
+void LinkedList<T>::push_front(T data)
+{
+	Node<T>* new_node = new Node<T>();
+	new_node->next = tail;
+	new_node->data = data;
+	tail = new_node;
+
+	if (list_size == 0)
+		head = new_node;
+
+	list_size++;
 }
