@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 
 template <typename T>
 class LinkedList
@@ -21,6 +22,7 @@ public:
 	void push_back(T data);
 	size_t size() const;
 	bool empty() const;
+	T& at(size_t pos) const;
 };
 
 template <typename T>
@@ -52,4 +54,18 @@ void LinkedList<T>::push_back(T data)
 		tail = new_node;
 
 	list_size++;
+}
+
+template <typename T>
+T& LinkedList<T>::at(size_t pos) const
+{
+	if (list_size > pos)
+	{
+		Node<T>* tmp = tail;
+		for (size_t i = 0; i < pos; i++)
+			tmp = tmp->next;
+		return tmp->data;
+	}
+
+	throw std::out_of_range("Out of range");
 }
