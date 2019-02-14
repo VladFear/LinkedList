@@ -4,6 +4,13 @@ template <typename T>
 class LinkedList
 {
 private:
+	template <typename A>
+	class Node
+	{
+		public:
+			Node<T>* next;
+			T data;
+	};
 
 public:
 	LinkedList();
