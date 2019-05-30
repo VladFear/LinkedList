@@ -26,6 +26,7 @@ public:
 	size_t size() const;
 	bool empty() const;
 	T& at(size_t pos) const;
+	LinkedList& operator = (const LinkedList& other);
 };
 
 template <typename T>
@@ -116,4 +117,29 @@ LinkedList<T>::~LinkedList()
 {
 	while (list_size)
 		pop_back();
+}
+
+template <typename T>
+LinkedList<T>& LinkedList<T>::operator = (const LinkedList<T>& other)
+{
+	  if (this != &other)
+		{
+			Node<T>* tmp = head;
+
+			while (tmp->next)
+			{
+				head = head -> next;
+				delete tmp;
+				tmp = head;
+      }
+
+			tmp = other->head;
+
+			while (tmp) 
+			{
+					push_back(tmp);
+					tmp = tmp->next;
+			}
+		}
+		return *this;
 }
